@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+         <!-- Prints in each row, the different fields for purchases if user has purchases -->
+         {% if not empty %}
+             {% for row in rows %}
+                <tr>
+                  <td>{{ row["symbol"] }}</td>
+                  <td>{{ row["company"] }}</td>
+                  <td>{{ row["shares"] }}</td>
+                  <td>{{ usd(row["price"]) }}</td>
+                  <td>{{ usd(row["total"]) }}</td>
+                </tr>
+             {% endfor %}
+             <!-- Prints cash column -->
+              <tr>
+                 <td>CASH</td>
+                 <td colspan="3"></td>
+                 <td>{{ usd(cash) }}</td>
+             </tr>
+             <!-- Prints grand total -->
+             <tr>
+                 <td colspan="4"></td>
+                 <th scope="row">{{ usd(grandTotal) }}</th>
+             </tr>
+        <!-- Otherwise, prints CASH and total cash -->
+        {% else %}
+             <tr>
+                 <td>CASH</td>
+                 <td colspan="3"></td>
+                 <td>{{ usd(cash) }}</td>
+             </tr>
+              <tr>
+                 <td colspan="4"></td>
+                 <th scope="row">{{ usd(cash) }}</th>
+             </tr>
+         {% endif %}
+      </tbody>
+    </table>
+{% endblock %}

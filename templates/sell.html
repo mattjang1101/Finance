@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <!-- Custom select option which shows the current shares that the user has -->
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="width: 10%;" name="symbol">
+            <option selected disabled value="">Symbol</option>
+            {% for row in symbolRows %}
+                <option>{{ row["symbol"] }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Shares option -->
+        <div class="form-group">
+            <br>
+            <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Shares" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
