@@ -4,4 +4,4 @@ Developed using Flask, this application allows users to create their own individ
 * Look up current stocks and their values
 * Purchase stocks 
 * Sell stocks
-* View their own transaction history
+* View their own transaction history.
