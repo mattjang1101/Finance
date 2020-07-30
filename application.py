@@ -370,7 +370,7 @@ def IsValid(password):
     isValid = True
 
     # Checks for password validity
-    # Length is at least 8. Contains a lowercase letter, an  uppercase letter, and a number
+    # Length is at least 8. Contains a lowercase letter, an  uppercase letter, and a number. No spaces allowed
     while(isValid):
         if(len(password) < 8 or len(password) > 20):
             isValid = False
@@ -379,6 +379,8 @@ def IsValid(password):
         elif not re.search("[A-Z]", password):
             isValid = False
         elif not re.search("[0-9]", password):
+            isValid = False
+        elif re.search(" ", password):
             isValid = False
         # password is valid
         else:
